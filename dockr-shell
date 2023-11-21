@@ -5,4 +5,4 @@ docker container run -it \
     -v $DOCKR_VOLUME:/root/.R/site-library \
     -v $PROJECT_PATH:/package \
     $DOCKR_IMAGE \
-    R
+    bash
