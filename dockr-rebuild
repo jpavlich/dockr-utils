@@ -1,0 +1,7 @@
+#!/bin/bash
+DOCKR_PATH=$(dirname "$0")
+source $DOCKR_PATH/dockr-common
+
+docker volume rm $DOCKR_VOLUME >&/dev/null
+docker image rm -f $DOCKR_IMAGE >&/dev/null
+docker build -t $DOCKR_IMAGE $DOCKR_PATH/docker -f $DOCKR_PATH/docker/Dockerfile

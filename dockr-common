@@ -1,0 +1,14 @@
+if [ "$#" -ne 1 ]; then
+    echo "$0 <project path>"
+    exit 1
+fi
+
+PROJECT_PATH=$(realpath "$1")
+PROJECT_NAME=$(basename "$PROJECT_PATH")
+DOCKR_IMAGE="$PROJECT_NAME-image"
+DOCKR_CONTAINER="$PROJECT_NAME-container"
+DOCKR_VOLUME="$PROJECT_NAME-volume"
+
+docker container kill $DOCKR_CONTAINER >&/dev/null
+docker container rm $DOCKR_CONTAINER >&/dev/null
+

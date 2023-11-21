@@ -1,0 +1,9 @@
+#!/bin/bash
+source $(dirname "$0")/dockr-common
+
+docker container run --rm --name $DOCKR_CONTAINER \
+    --env R_LIBS=/root/.R/site-library \
+    -v $DOCKR_VOLUME:/root/.R/site-library \
+    -v $PROJECT_PATH:/package \
+    $DOCKR_IMAGE \
+    'cd /package && /scripts/check.sh'
